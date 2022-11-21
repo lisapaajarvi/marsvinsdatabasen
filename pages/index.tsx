@@ -13,6 +13,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
+        <h1>Marsvinsdatabasen</h1>
         <GuineaPigNotes/>
       </main>
     </div>
