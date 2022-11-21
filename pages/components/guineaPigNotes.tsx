@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import styles from '../../styles/Home.module.css'
 import { app, db } from '../../firebaseConfig';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
@@ -11,6 +10,7 @@ export default function GuineaPigNotes() {
     const [notes, setNotes] = useState('');
     const [guineaPigArray, setGuineaPigArray] = useState([]);
     const dbInstance = collection(db, 'guineaPigNotes');
+    
     const inputToggle = () => {
         setInputVisible(!isInputVisible)
     };
@@ -40,6 +40,8 @@ export default function GuineaPigNotes() {
 
     useEffect(() => {
         getNotes();
+        // disable ES lint to remove error from empty dependency array
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     return (
