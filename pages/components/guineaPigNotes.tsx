@@ -16,6 +16,10 @@ export default function GuineaPigNotes() {
             guineaPigName: name,
             guineaPigInfo: notes
         })
+        .then(() => {
+            setName('')
+            setNotes('')
+        })
     }
     return (
         <div className={styles.container}>
