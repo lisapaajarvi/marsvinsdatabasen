@@ -16,6 +16,14 @@
   align-items: center;
 }
 
+.guineaPigDiv {
+  min-height: 8rem;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: azure;
+  border-radius: 1rem;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;

@@ -48,7 +48,7 @@ export default function GuineaPigNotes() {
         <div className={styles.noteContainer}>
             {guineaPigArray.map((gp:guineaPigNote) => {
                 return (
-                    <div key={gp.id}>
+                    <div key={gp.id} className={styles.guineaPigDiv}>
                         <h3>{gp.guineaPigName}</h3>
                         <p>{gp.guineaPigInfo}</p>
                     </div>
