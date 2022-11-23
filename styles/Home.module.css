@@ -49,10 +49,22 @@
   width: 15rem;
   height: 2rem;
   cursor: pointer;
-  background-color: rgb(119, 27, 27);
+  background-color: rgb(43, 208, 48);
   color: whitesmoke;
   border: rgb(119, 27, 27);
   font-family: 'Gloria Hallelujah', cursive;
+  margin: 5px 0;
+}
+
+.deleteBtn{
+  width: 15rem;
+  height: 2rem;
+  background-color: rgb(241, 16, 16);
+  color: whitesmoke;
+  border: rgb(119, 27, 27);
+  cursor: pointer;
+  font-family: 'Gloria Hallelujah', cursive;
+  margin: 5px 0;
 }
 
 .input{

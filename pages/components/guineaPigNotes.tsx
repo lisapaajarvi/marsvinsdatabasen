@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import { app, db } from '../../firebaseConfig';
-import { collection, addDoc, getDocs, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { useState, useEffect } from 'react'
 import { guineaPigNote } from '../../interfaces';
 
@@ -46,6 +46,18 @@ export default function GuineaPigNotes() {
             guineaPigName: name,
             guineaPigInfo: notes,
         })
+        setName('')
+        setNotes('')
+        getNotes()
+        setIsEdit(false)
+    }
+
+    const deleteNote = () => {
+        const collectionById = doc(db, 'guineaPigNotes', id)
+
+        deleteDoc(collectionById)
+        setName('')
+        setNotes('')
         getNotes()
         setIsEdit(false)
     }
@@ -128,6 +140,12 @@ export default function GuineaPigNotes() {
                             onClick={saveEditedNote}
                         >
                             Save Note
+                        </button>
+                        <button 
+                            className={styles.deleteBtn}
+                            onClick={deleteNote}
+                        >
+                            Delete
                         </button>
                     </div>
                 </div>
