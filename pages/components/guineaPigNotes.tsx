@@ -52,10 +52,10 @@ export default function GuineaPigNotes() {
         setIsEdit(false)
     }
 
-    const deleteNote = () => {
+    const deleteNote = async () => {
         const collectionById = doc(db, 'guineaPigNotes', id)
 
-        deleteDoc(collectionById)
+        await deleteDoc(collectionById)
         setName('')
         setNotes('')
         getNotes()
