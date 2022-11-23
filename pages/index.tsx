@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import GuineaPigNotes from './components/guineaPigNotes';
+import GuineaPigNotes from './components/GuineaPigNotes';
 import { app, db } from '../firebaseConfig';
 import styles from '../styles/Home.module.css'
 
