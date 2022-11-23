@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import { app, db } from '../../firebaseConfig';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, getDoc } from 'firebase/firestore';
 import { useState, useEffect } from 'react'
 import { guineaPigNote } from '../../interfaces';
 
@@ -9,6 +9,8 @@ export default function GuineaPigNotes() {
     const [name, setName] = useState('');
     const [notes, setNotes] = useState('');
     const [guineaPigArray, setGuineaPigArray] = useState([]);
+    const [isEdit, setIsEdit] = useState(false);
+    const [id, setId] = useState('');
     const dbInstance = collection(db, 'guineaPigNotes');
     
     const inputToggle = () => {
@@ -37,6 +39,20 @@ export default function GuineaPigNotes() {
         })
     };
 
+    const saveEditedNote = () => {
+        setIsEdit(false)
+    }
+
+    const getSingleNote = async (id:string) => {
+        const singleNote = doc(db, 'guineaPigNotes', id)
+        const data = await getDoc(singleNote)
+        const gp = { ...data.data(), id: data.id } as guineaPigNote
+        setId(id)
+        setName(gp.guineaPigName)
+        setNotes(gp.guineaPigInfo)
+        setIsEdit(true)
+    }
+
 
     useEffect(() => {
         getNotes();
@@ -46,9 +62,12 @@ export default function GuineaPigNotes() {
 
     return (
         <div className={styles.noteContainer}>
+            {!isEdit? (
+            <>
             {guineaPigArray.map((gp:guineaPigNote) => {
                 return (
-                    <div key={gp.id} className={styles.guineaPigDiv}>
+                    <div key={gp.id} className={styles.guineaPigDiv} onClick={() => getSingleNote(gp.id)}
+                >
                         <h3>{gp.guineaPigName}</h3>
                         <p>{gp.guineaPigInfo}</p>
                     </div>
@@ -83,7 +102,29 @@ export default function GuineaPigNotes() {
                 ) : (
                     <></>
                 )}
-            </div>
+            </div> 
+            </>):(
+                <div>
+                    <div className={styles.container}>
+                        <input 
+                            className={styles.input}
+                            onChange={(e) => setName(e.target.value)}
+                            value={name}
+                        />
+                        <textarea 
+                            className={styles.textarea}
+                            onChange={(e) => setNotes(e.target.value)}
+                            value={notes}
+                        />
+                        <button
+                            className={styles.saveBtn}
+                            onClick={saveEditedNote}
+                        >
+                            Save Note
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
