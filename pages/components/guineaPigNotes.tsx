@@ -1,6 +1,6 @@
 import styles from '../../styles/Home.module.css'
 import { app, db } from '../../firebaseConfig';
-import { collection, addDoc, getDocs, doc, getDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { useState, useEffect } from 'react'
 import { guineaPigNote } from '../../interfaces';
 
@@ -40,6 +40,13 @@ export default function GuineaPigNotes() {
     };
 
     const saveEditedNote = () => {
+        const collectionById = doc(db, 'guineaPigNotes', id)
+
+        updateDoc(collectionById, {
+            guineaPigName: name,
+            guineaPigInfo: notes,
+        })
+        getNotes()
         setIsEdit(false)
     }
 
