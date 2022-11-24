@@ -96,17 +96,17 @@ export default function GuineaPigNotes() {
                 <button
                     className={styles.button}
                     onClick={inputToggle}>
-                    Add a New Guinea Pig Note
+                    Lägg till marsvin
                 </button>
             
                 {isInputVisible ? (
                     <div className={styles.container}>
-                        <input placeholder='Enter Guinea Pig Name'
+                        <input placeholder='Marsvinets namn'
                             className={styles.input}
                             onChange={(e) => setName(e.target.value)}
                             value={name}
                         />
-                        <textarea placeholder='Enter Guinea Pig Notes'
+                        <textarea placeholder='Anteckningar'
                             className={styles.textarea}
                             onChange={(e) => setNotes(e.target.value)}
                             value={notes}
@@ -115,7 +115,7 @@ export default function GuineaPigNotes() {
                             className={styles.saveBtn}
                             onClick={saveNote}
                         >
-                            Save Note
+                            Spara
                         </button>
                     </div>
                 ) : (
@@ -139,13 +139,13 @@ export default function GuineaPigNotes() {
                             className={styles.saveBtn}
                             onClick={saveEditedNote}
                         >
-                            Save Note
+                            Spara ändringar
                         </button>
                         <button 
                             className={styles.deleteBtn}
                             onClick={deleteNote}
                         >
-                            Delete
+                            Ta bort
                         </button>
                     </div>
                 </div>
