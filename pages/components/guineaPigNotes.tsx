@@ -105,18 +105,13 @@ export default function GuineaPigNotes() {
                             onChange={(e) => setNotes(e.target.value)}
                             value={notes}
                         />
-                        <button
-                            className={styles.saveBtn}
-                            onClick={saveEditedNote}
-                        >
+                        <Button color="cyan" onClick={saveEditedNote} mt="sm">
                             Spara ändringar
-                        </button>
-                        <button
-                            className={styles.deleteBtn}
-                            onClick={deleteNote}
-                        >
+                        </Button>
+
+                        <Button color="red" onClick={deleteNote} mt="sm">
                             Ta bort
-                        </button>
+                        </Button>
                     </div>
                 </div>
             ) : (

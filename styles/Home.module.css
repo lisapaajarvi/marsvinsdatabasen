@@ -59,13 +59,6 @@
 }
 
 .deleteBtn {
-    width: 15rem;
-    height: 2rem;
-    background-color: rgb(241, 16, 16);
-    color: whitesmoke;
-    border: rgb(119, 27, 27);
-    cursor: pointer;
-    font-family: 'Gloria Hallelujah', cursive;
     margin: 5px 0;
 }
 
