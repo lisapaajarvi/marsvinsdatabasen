@@ -1,5 +1,5 @@
 export interface guineaPigNote {
-    guineaPigInfo: string,
-    guineaPigName: string,
-    id: string
+    guineaPigInfo: string;
+    guineaPigName: string;
+    id: string;
 }

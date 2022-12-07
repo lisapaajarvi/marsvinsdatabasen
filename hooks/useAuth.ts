@@ -1,6 +1,6 @@
-import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { useEffect, useState } from "react";
-import { app } from "../firebaseConfig";
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { app } from '../firebaseConfig';
 
 const useAuth = () => {
     const [user, setUser] = useState({} as User | null);
@@ -8,8 +8,8 @@ const useAuth = () => {
     const auth = getAuth(app);
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-        setIsLoggedIn(user && user.uid ? true : false);
-        setUser(user);
+            setIsLoggedIn(user && user.uid ? true : false);
+            setUser(user);
         });
     });
     return { user, isLoggedIn };
