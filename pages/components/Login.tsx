@@ -117,6 +117,8 @@ export default function AuthenticationForm(props: PaperProps) {
                     <TextInput
                         required
                         label="Email"
+                        id="email"
+                        data-cy="email"
                         placeholder="hej@marsvin.nu"
                         value={form.values.email}
                         onChange={(event) =>
@@ -131,6 +133,8 @@ export default function AuthenticationForm(props: PaperProps) {
                     <PasswordInput
                         required
                         label="Lösenord"
+                        id="password"
+                        data-cy="password"
                         placeholder="Lösenord"
                         value={form.values.password}
                         onChange={(event) =>
@@ -171,7 +175,9 @@ export default function AuthenticationForm(props: PaperProps) {
                             ? 'Har du redan ett konto? Logga in'
                             : 'Har du inget konto? Registrera dig'}
                     </Anchor>
-                    <Button type="submit">{type}</Button>
+                    <Button type="submit" id="submit">
+                        {type}
+                    </Button>
                 </Group>
             </form>
         </Paper>

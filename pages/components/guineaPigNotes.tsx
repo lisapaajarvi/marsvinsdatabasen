@@ -1,5 +1,5 @@
 import styles from '../../styles/Home.module.css';
-import { app, db } from '../../firebaseConfig';
+import { db } from '../../firebaseConfig';
 import {
     collection,
     addDoc,
@@ -53,7 +53,6 @@ export default function GuineaPigNotes() {
 
     const saveEditedNote = () => {
         const collectionById = doc(db, 'guineaPigNotes', id);
-
         updateDoc(collectionById, {
             guineaPigName: name,
             guineaPigInfo: notes,
@@ -66,7 +65,6 @@ export default function GuineaPigNotes() {
 
     const deleteNote = async () => {
         const collectionById = doc(db, 'guineaPigNotes', id);
-
         await deleteDoc(collectionById);
         setName('');
         setNotes('');
@@ -96,11 +94,14 @@ export default function GuineaPigNotes() {
                 <div>
                     <div className={styles.container}>
                         <input
+                            id="name"
+                            data-cy="edit-name"
                             className={styles.input}
                             onChange={(e) => setName(e.target.value)}
                             value={name}
                         />
                         <textarea
+                            data-cy="edit-notes"
                             className={styles.textarea}
                             onChange={(e) => setNotes(e.target.value)}
                             value={notes}
@@ -134,26 +135,32 @@ export default function GuineaPigNotes() {
                                 color="cyan"
                                 size="lg"
                                 onClick={inputToggle}
+                                data-cy="add-button"
                             >
                                 Lägg till marsvin
                             </Button>
                         ) : (
                             <Link href="/login">
-                                <Button color="cyan" size="lg">
+                                <Button
+                                    color="cyan"
+                                    size="lg"
+                                    data-cy="login-to-add-button"
+                                >
                                     Logga in för att lägga till marsvin
                                 </Button>
                             </Link>
                         )}
-
-                        {isInputVisible && isLoggedIn ? (
+                        {isInputVisible && isLoggedIn && (
                             <div className={styles.container}>
                                 <input
+                                    data-cy="new-name"
                                     placeholder="Marsvinets namn"
                                     className={styles.input}
                                     onChange={(e) => setName(e.target.value)}
                                     value={name}
                                 />
                                 <textarea
+                                    data-cy="new-notes"
                                     placeholder="Anteckningar"
                                     className={styles.textarea}
                                     onChange={(e) => setNotes(e.target.value)}
@@ -161,14 +168,12 @@ export default function GuineaPigNotes() {
                                 />
                                 <Button
                                     color="cyan"
-                                    size="md"
+                                    size="sm"
                                     onClick={saveNote}
                                 >
                                     Spara
                                 </Button>
                             </div>
-                        ) : (
-                            <></>
                         )}
                     </div>
                 </>
